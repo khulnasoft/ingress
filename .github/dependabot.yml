@@ -1,0 +1,24 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: daily
+    reviewers:
+      - "Embraser01"
+      - "mavimo"
+      - "mholt"
+    labels:
+      - "dependencies"
+      - "dependabot"
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: daily
+    reviewers:
+      - "Embraser01"
+      - "mavimo"
+      - "mholt"
+    labels:
+      - "dependencies"
+      - "dependabot"

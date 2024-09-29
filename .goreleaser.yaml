@@ -1,0 +1,112 @@
+project_name: ingress
+before:
+  hooks:
+    - go mod tidy
+builds:
+  - main: ./cmd/kengine
+    binary: ingress-controller
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - arm64
+      - s390x
+    mod_timestamp: "{{ .CommitTimestamp }}"
+
+dockers:
+  - use: buildx
+    goos: linux
+    goarch: amd64
+    dockerfile: ./Dockerfile
+    skip_push: "true"
+    image_templates:
+      - "kengine/{{ .ProjectName }}:test-image"
+    build_flag_templates:
+      - "--platform=linux/amd64"
+      - "--pull"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.name={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+
+  - use: buildx
+    goos: linux
+    goarch: amd64
+    dockerfile: ./Dockerfile
+    image_templates:
+      - "kengine/{{ .ProjectName }}:{{ .Tag }}-amd64"
+    build_flag_templates:
+      - "--platform=linux/amd64"
+      - "--pull"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.name={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+
+  - use: buildx
+    goos: linux
+    goarch: arm64
+    dockerfile: ./Dockerfile
+    image_templates:
+      - "kengine/{{ .ProjectName }}:{{ .Tag }}-arm64v8"
+    build_flag_templates:
+      - "--platform=linux/arm64/v8"
+      - "--pull"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.name={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+
+  - use: buildx
+    goos: linux
+    goarch: s390x
+    dockerfile: ./Dockerfile
+    image_templates:
+      - "kengine/{{ .ProjectName }}:{{ .Tag }}-s390x"
+    build_flag_templates:
+      - "--platform=linux/s390x"
+      - "--pull"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.name={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+
+docker_manifests:
+  # https://goreleaser.com/customization/docker_manifest/
+  - name_template: kengine/{{ .ProjectName }}:latest
+    image_templates:
+      - kengine/{{ .ProjectName }}:{{ .Tag }}-amd64
+      - kengine/{{ .ProjectName }}:{{ .Tag }}-arm64v8
+      - kengine/{{ .ProjectName }}:{{ .Tag }}-s390x
+  - name_template: kengine/{{ .ProjectName }}:v{{ .Major }}
+    image_templates:
+      - kengine/{{ .ProjectName }}:{{ .Tag }}-amd64
+      - kengine/{{ .ProjectName }}:{{ .Tag }}-arm64v8
+      - kengine/{{ .ProjectName }}:{{ .Tag }}-s390x
+  - name_template: kengine/{{ .ProjectName }}:v{{ .Major }}.{{ .Minor }}
+    image_templates:
+      - kengine/{{ .ProjectName }}:{{ .Tag }}-amd64
+      - kengine/{{ .ProjectName }}:{{ .Tag }}-arm64v8
+      - kengine/{{ .ProjectName }}:{{ .Tag }}-s390x
+  - name_template: kengine/{{ .ProjectName }}:{{ .Tag }}
+    image_templates:
+      - kengine/{{ .ProjectName }}:{{ .Tag }}-amd64
+      - kengine/{{ .ProjectName }}:{{ .Tag }}-arm64v8
+      - kengine/{{ .ProjectName }}:{{ .Tag }}-s390x
+
+release:
+  disable: true
+
+checksum:
+  name_template: "checksums.txt"
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^ci:"

@@ -1,0 +1,18 @@
+apiVersion: v2
+name: kengine-ingress-controller
+home: https://github.com/khulnasoft/ingress
+description: A helm chart for the Kengine Kubernetes ingress controller
+icon: https://khulnasoft.com/resources/images/kengine-circle-lock.svg
+type: application
+version: 1.1.0
+appVersion: "v0.2.1"
+keywords:
+  - ingress-controller
+  - khulnasoft
+sources:
+  - https://github.com/khulnasoft/ingress
+maintainers:
+  - name: mavimo
+    url: https://github.com/mavimo
+  - name: embraser01
+    url: https://github.com/embraser01

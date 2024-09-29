@@ -1,0 +1,37 @@
+apiVersion: skaffold/v4beta7
+kind: Config
+metadata:
+  name: kengine-ingress-controller
+build:
+  artifacts:
+    - image: kengine-ingress
+      context: .
+      docker:
+        dockerfile: Dockerfile.dev
+deploy:
+  helm:
+    releases:
+      - name: kengine-ingress-development
+        namespace: kengine-system
+        chartPath: charts/kengine-ingress-controller
+        createNamespace: true
+        setValueTemplates:
+          image:
+            repository: "{{ .IMAGE_REPO_NO_DOMAIN_kengine_ingress }}"
+            tag: "{{.IMAGE_TAG_kengine_ingress}}@{{.IMAGE_DIGEST_kengine_ingress}}"
+manifests:
+  rawYaml:
+   - ./kubernetes/sample/*.yaml
+portForward:
+  - resourceType: service
+    resourceName: kengine-ingress-development-kengine-ingress-controller
+    namespace: kengine-system
+    address: 0.0.0.0
+    port: 80
+    localPort: 8080
+  - resourceType: service
+    resourceName: kengine-ingress-development-kengine-ingress-controller
+    namespace: kengine-system
+    address: 0.0.0.0
+    port: 443
+    localPort: 8443

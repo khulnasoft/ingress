@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kengine-global-options
+  namespace: kengine-system
+data:
+  acmeCA: internal
+  # email: test@example.com
+  # debug: "false"
