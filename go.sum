@@ -304,8 +304,8 @@ github.com/khulnasoft-lab/certmagic v0.21.2 h1:DLwO4VTZ5EmZCyGVd75katiCFpTYU1mxT
 github.com/khulnasoft-lab/certmagic v0.21.2/go.mod h1:LYl17oA0vIggXEKJG+WbHQv3N3zzG7Y/RCYTBnXbO8s=
 github.com/khulnasoft-lab/zerossl v0.1.0 h1:IhI5Z8sCsFvzh6U35nXbCnvQT+btOeRdXar30DBPiqY=
 github.com/khulnasoft-lab/zerossl v0.1.0/go.mod h1:i/Bs41Oz2dqSgpebrwIL+yfq3kzEK4XR5aCfJz2NiSQ=
-github.com/khulnasoft/kengine/v2 v2.0.0-20240929042243-fe6cd8447519 h1:BXeGd95op/9kmk/fOalTcwwlQOcaVZtG1OV0vYBtEQI=
-github.com/khulnasoft/kengine/v2 v2.0.0-20240929042243-fe6cd8447519/go.mod h1:g+Rw39I0aQOSdW/kmvIRcctrrY6Ep2DN049TQDIG9dg=
+github.com/khulnasoft/kengine/v2 v2.8.4 h1:J9ObcP7znIv8Q13Zm6OofEERoZ8x54Lv3pKJtQuSUgg=
+github.com/khulnasoft/kengine/v2 v2.8.4/go.mod h1:g+Rw39I0aQOSdW/kmvIRcctrrY6Ep2DN049TQDIG9dg=
 github.com/kisielk/errcheck v1.5.0/go.mod h1:pFxgyoBC7bSaBwPgfKdkLd5X25qrDl4LWUI2bnpBCr8=
 github.com/kisielk/gotool v1.0.0/go.mod h1:XhKaO+MFFWcvkIS/tQcRk01m1F5IRFswLeQ+oQHNcck=
 github.com/klauspost/compress v1.12.3/go.mod h1:8dP1Hq4DHOhN9w426knH3Rhby4rFm6D8eO+e+Dq5Gzg=

@@ -5,7 +5,7 @@ go 1.23.1
 require (
 	github.com/google/uuid v1.6.0
 	github.com/khulnasoft-lab/certmagic v0.21.2
-	github.com/khulnasoft/kengine/v2 v2.0.0-20240929042243-fe6cd8447519
+	github.com/khulnasoft/kengine/v2 v2.8.4
 	github.com/mholt/acmez/v2 v2.0.2
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/pires/go-proxyproto v0.7.1-0.20240628150027-b718e7ce4964
