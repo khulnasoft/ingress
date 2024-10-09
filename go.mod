@@ -8,7 +8,7 @@ require (
 	github.com/khulnasoft/kengine/v2 v2.0.0-20240929042243-fe6cd8447519
 	github.com/mholt/acmez/v2 v2.0.2
 	github.com/mitchellh/mapstructure v1.5.0
-	github.com/pires/go-proxyproto v0.7.1-0.20240628150027-b718e7ce4964
+	github.com/pires/go-proxyproto v0.8.0
 	github.com/stretchr/testify v1.9.0
 	go.uber.org/zap v1.27.0
 	gopkg.in/go-playground/pool.v3 v3.1.1
